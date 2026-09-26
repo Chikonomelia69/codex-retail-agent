@@ -970,7 +970,7 @@ async function handleLaserScanComplete() {
 
     // Use the real backend agent after the visual scan, so this interaction also exercises RAG/tool orchestration.
     try {
-        const response = await fetch("http://localhost:8000/chat", {
+        const response = await fetch("https://codex-epdc.onrender.com/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -1564,9 +1564,9 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 // Give the backend a maximum of 60 seconds
                 const controller = new AbortController();
-                const timeout = setTimeout(() => controller.abort(), 60000);
+                const timeout = setTimeout(() => controller.abort(), 180000);
 
-                const response = await fetch("http://localhost:8000/chat", {
+                const response = await fetch("https://codex-epdc.onrender.com/chat", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
