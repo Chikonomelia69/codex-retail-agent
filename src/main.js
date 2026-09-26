@@ -1637,7 +1637,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function syncActiveReceiptToBackend() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/load-receipt", {
+        const response = await fetch("https://codex-epdc.onrender.com/load-receipt", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ receipt: activeReceipt.raw_text })
