@@ -1,0 +1,38 @@
+========================================
+             CODEX DOWNTOWN #205
+         250 Market St, San Francisco, CA
+              Tel: (415) 555-0199
+========================================
+RECEIPT / ORDER ID: REC-2026-7734
+CUSTOMER: Jordan Lee
+DATE OF PURCHASE: 2026-08-25
+CASHIER: Devon W. (Terminal 1)
+PAYMENT: Apple Pay (Amex 1004)
+
+ITEMS PURCHASED:
+----------------------------------------
+Item: Merino Wool Crewneck Winter Sweater (Navy / L)
+SKU: APP-8840
+Category: Apparel, Clothing & Footwear
+Qty: 1
+Unit Price: $89.00
+Total: $89.00
+Condition: New with tags attached
+
+Item: Soundcore Wireless Noise Isolating Earbuds
+SKU: ELEC-4411
+Category: Consumer Electronics & Gadgets
+Qty: 1
+Unit Price: $79.99
+Total: $79.99
+Condition: New / Factory Sealed
+----------------------------------------
+SUBTOTAL:       $168.99
+SALES TAX (8.5%): $14.36
+TOTAL CHARGE:   $183.35
+========================================
+Store Policy Notice:
+30-day return window applies from purchase date.
+Return deadline: 2026-09-24 (Approaching rapidly!)
+Thank you for shopping at CODEX!
+========================================

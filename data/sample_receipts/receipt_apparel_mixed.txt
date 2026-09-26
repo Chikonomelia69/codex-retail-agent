@@ -1,0 +1,47 @@
+========================================
+           CODEX FLAGSHIP STORE #101
+         500 Fifth Avenue, New York, NY
+              Tel: (212) 555-0149
+========================================
+RECEIPT / ORDER ID: REC-2026-9042
+CUSTOMER: Sarah Chen
+DATE OF PURCHASE: 2026-09-10
+CASHIER: Elena R. (Terminal 2)
+PAYMENT: Mastercard ending in 8831
+
+ITEMS PURCHASED:
+----------------------------------------
+Item: Patagonia Torrentshell 3L Rain Jacket (Black / M)
+SKU: APP-1120
+Category: Apparel, Clothing & Footwear
+Qty: 1
+Unit Price: $179.00
+Total: $179.00
+Condition: New with tags attached
+
+Item: Nike Air Zoom Pegasus 40 Running Shoes (Size 10)
+SKU: APP-5541
+Category: Apparel, Clothing & Footwear
+Qty: 1
+Unit Price: $139.99
+Total: $139.99
+Condition: New in original shoebox
+
+Item: Hydro Flask 32oz Insulated Water Bottle
+SKU: HOME-7721
+Category: Home & Kitchen Appliances
+Qty: 1
+Unit Price: $44.95
+Total: $44.95
+Condition: New
+----------------------------------------
+SUBTOTAL:       $363.94
+SALES TAX (8.875%): $32.30
+TOTAL CHARGE:   $396.24
+========================================
+Store Policy Notice:
+Apparel eligible for 30-day return & 90-day defect exchange.
+Home goods eligible for 45-day return & 2-Year warranty.
+Items must have all original tags attached.
+Thank you for shopping at CODEX!
+========================================

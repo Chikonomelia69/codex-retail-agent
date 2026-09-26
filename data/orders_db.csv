@@ -1,0 +1,7 @@
+order_id,customer_name,order_date,status,carrier,tracking_number,estimated_delivery,items_summary,shipping_address
+ORD-1001,Alex Morgan,2026-09-18,Delivered,FedEx,FX-9823411029,2026-09-20,"Sony WH-1000XM5 Headphones (x1), USB-C Charging Cable (x2)","742 Evergreen Terrace, Springfield, IL"
+ORD-1002,Alex Morgan,2026-09-19,Shipped,UPS,UPS-1Z999999999,2026-09-23,"Patagonia Torrentshell Jacket (x1, Black/M)","742 Evergreen Terrace, Springfield, IL"
+ORD-1003,Sarah Chen,2026-09-20,Out for Delivery,USPS,9400111899562534,2026-09-21,"Espresso Machine Pro (x1)","100 Tech Boulevard, San Jose, CA"
+ORD-1004,Jordan Lee,2026-09-21,Processing,Standard Post,PENDING,2026-09-25,"Nike Air Zoom Pegasus 40 (x1, Size 10.5)","456 Oak Avenue, Austin, TX"
+ORD-1005,Emily Davis,2026-09-15,Delivered,DHL,DHL-549102834,2026-09-18,"Apple iPad Air M2 (x1), Apple Pencil Pro (x1)","12 Maple Drive, Seattle, WA"
+ORD-1006,David Miller,2026-09-12,Cancelled,N/A,N/A,N/A,"4K Gaming Monitor 27-inch (x1)","88 Beacon St, Boston, MA"

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODEX 3D Cockpit — Autonomous Retail & Warranty Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://esm.sh/three@0.160.0",
+      "three/examples/jsm/controls/OrbitControls.js": "https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Full-Screen GPU-Accelerated 3D Cinematic Ambient Background -->
+  <canvas id="cinematicCanvas"></canvas>
+
+  <div class="app-container">
+    <!-- Left Cyber Sidebar -->
+    <aside class="sidebar">
+      <!-- 3D Digital Cockpit HUD Card -->
+      <div class="telemetry-card">
+        <div class="telemetry-header">
+          <span>● LIVE TELEMETRY HUD</span>
+          <span style="color:#10b981;">ONLINE</span>
+        </div>
+        <div class="telemetry-title">⚡ CODEX 3D COCKPIT</div>
+        <div class="telemetry-tags">
+          <span class="tele-tag">Three.js WebGL</span>
+          <span class="tele-tag">4D Spacetime</span>
+          <span class="tele-tag">Vite 6 SPA</span>
+          <span class="tele-tag" style="color:#10b981;">Netlify Ready</span>
+        </div>
+      </div>
+
+      <!-- Active Ingested Receipt HUD -->
+      <div id="activeReceiptHud" class="active-receipt-hud">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Document Ingestion Dropzone -->
+      <div class="sidebar-section-title">📂 Ingest Receipt Document</div>
+      <div class="file-dropzone" id="fileDropzone">
+        <input type="file" id="fileInput" accept=".txt,.md,.csv,.json" />
+        <div class="file-dropzone-label">
+          <strong>Click to upload</strong> or drag & drop<br>
+          <span style="font-size:10px;">TXT, MD, CSV invoices</span>
+        </div>
+      </div>
+
+      <!-- Quick Load Sample Receipts -->
+      <div class="sidebar-section-title">⚡ Quick Load Samples</div>
+      <button class="sidebar-btn sample-btn active" data-sample="sample_1">
+        <span>🚨</span>
+        <div style="line-height:1.2;">
+          <div>Sample 1: Urgent Electronics</div>
+          <small style="color:#f87171;font-size:10px;">5 days left (REC-2026-8891)</small>
+        </div>
+      </button>
+
+      <button class="sidebar-btn sample-btn" data-sample="sample_2">
+        <span>🧥</span>
+        <div style="line-height:1.2;">
+          <div>Sample 2: Mixed Apparel</div>
+          <small style="color:#94a3b8;font-size:10px;">Sarah Chen (REC-2026-9042)</small>
+        </div>
+      </button>
+
+      <button class="sidebar-btn sample-btn" data-sample="sample_3">
+        <span>⏳</span>
+        <div style="line-height:1.2;">
+          <div>Sample 3: Expiring Winter</div>
+          <small style="color:#f87171;font-size:10px;">3 days left (REC-2026-7734)</small>
+        </div>
+      </button>
+
+      <button class="sidebar-btn sample-btn" data-sample="sample_4">
+        <span>🛒</span>
+        <div style="line-height:1.2;">
+          <div>Sample 4: Store Invoice</div>
+          <small style="color:#94a3b8;font-size:10px;">Tabish (ORD-9912)</small>
+        </div>
+      </button>
+
+      <button class="sidebar-btn sample-btn" data-sample="sample_5">
+        <span>🏪</span>
+        <div style="line-height:1.2;">
+          <div>Sample 5: ABC Mart POS</div>
+          <small style="color:#94a3b8;font-size:10px;">Table format (20230922-001234)</small>
+        </div>
+      </button>
+
+      <!-- Paste Text Expander -->
+      <div class="cyber-expander" style="margin-top:14px;">
+        <div class="cyber-expander-header">
+          <span>✍️ Paste Receipt Text Directly</span>
+          <span>▾</span>
+        </div>
+        <div class="cyber-expander-body">
+          <textarea id="pasteArea" rows="4" style="width:100%;background:rgba(6,9,19,0.9);border:1px solid rgba(56,189,248,0.3);color:#fff;border-radius:6px;padding:8px;font-family:inherit;font-size:11px;outline:none;" placeholder="Paste raw store bill text here..."></textarea>
+          <button id="pasteSubmitBtn" class="sidebar-btn" style="margin-top:8px;justify-content:center;background:var(--accent-cyan);color:#060913;font-weight:700;">Ingest Pasted Text 🚀</button>
+        </div>
+      </div>
+
+      <!-- Reset Button -->
+      <button id="resetReceiptBtn" class="sidebar-btn" style="margin-top:10px;justify-content:center;border-color:rgba(239,68,68,0.4);color:#fca5a5;">
+        🔄 Reset to Sample 1
+      </button>
+
+      <hr style="border-color:rgba(56,189,248,0.2);margin:18px 0;" />
+
+      <!-- Mock Orders Table Expander -->
+      <div class="cyber-expander">
+        <div class="cyber-expander-header">
+          <span>📦 Mock Orders Database (Live Table)</span>
+          <span>▾</span>
+        </div>
+        <div class="cyber-expander-body" style="padding:4px;overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:10px;text-align:left;">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(56,189,248,0.3);color:#38bdf8;">
+                <th style="padding:4px 6px;">Order ID</th>
+                <th style="padding:4px 6px;">Customer</th>
+                <th style="padding:4px 6px;">Status</th>
+                <th style="padding:4px 6px;">Carrier</th>
+                <th style="padding:4px 6px;">Tracking</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Policy Expander -->
+      <div class="cyber-expander">
+        <div class="cyber-expander-header">
+          <span>📜 CODEX Store Policy</span>
+          <span>▾</span>
+        </div>
+        <div class="cyber-expander-body" style="line-height:1.4;color:#cbd5e1;">
+          <strong style="color:#38bdf8;">§2.1 Electronics:</strong> 30 calendar days return window, 1-Year hardware warranty.<br><br>
+          <strong style="color:#38bdf8;">§2.2 Apparel:</strong> 30 calendar days return window, 90-day seam warranty.<br><br>
+          <strong style="color:#38bdf8;">§2.4 Final Sale:</strong> Strictly non-returnable, 0 days window, no warranty.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main 3D Cockpit Content Area -->
+    <main class="main-content">
+      <!-- Header -->
+      <div class="main-header-bar">
+        <div>
+          <div class="main-header-title">⚡ CODEX Autonomous Retail & Warranty Agent</div>
+          <div class="main-header-subtitle">Interactive 4D Spacetime Digital Twin, Google ✦ Gemini AI Overview & 5.6 Tera ChartGPT</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="tele-tag" style="background:rgba(16,185,129,0.15);color:#86efac;border-color:rgba(16,185,129,0.3);">● 3D WebGL Active</span>
+          <span class="tele-tag" style="background:rgba(66,133,244,0.15);color:#93c5fd;border-color:rgba(66,133,244,0.3);">✦ Gemini 2.5 Multi-Modal</span>
+        </div>
+      </div>
+
+      <!-- Proactive Alert Banner -->
+      <div id="alertBannerContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Interactive 3D / 4D Parcel Digital Twin Section -->
+      <div class="twin-3d-box" id="twinBox">
+        <canvas id="twinCanvas"></canvas>
+        <div class="twin-hud-overlay">
+          <div class="twin-hud-title">● 3D/4D SPATIAL DIGITAL TWIN · COMMERCIAL SHOWROOM</div>
+          <div class="twin-hud-order" id="twinOrder">REC-2026-8891</div>
+          <div id="twinBadge" class="twin-hud-badge urgent">⚠️ ALERT: 2 ITEM(S) EXPIRING SOON</div>
+        </div>
+        <div class="twin-controls">
+          <button class="twin-btn active" id="btnToggle4D">🌀 4D Tesseract [ON]</button>
+          <button class="twin-btn" id="btnLaser">⚡ Laser Scan</button>
+          <button class="twin-btn" id="btnWireframe">Wireframe</button>
+          <button class="twin-btn" id="btnTimeWarp">⏱️ Time-Warp [1x]</button>
+          <button class="twin-btn" id="btnResetCamera">Reset View</button>
+        </div>
+      </div>
+
+      <!-- 5 Key Metrics Cards -->
+      <div class="metrics-grid-5">
+        <div class="metric-tile">
+          <div class="metric-label">Order ID</div>
+          <div class="metric-value" id="mOrderId">REC-2026-8891</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-label">Customer</div>
+          <div class="metric-value" id="mCustomer">Alex Morgan</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-label">Store</div>
+          <div class="metric-value" id="mStore">CODEX RETAIL #402</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-label">Purchase Date</div>
+          <div class="metric-value" id="mDate">2026-08-27</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-label">Total Charged</div>
+          <div class="metric-value" id="mTotal" style="color:#38bdf8;">$404.96</div>
+        </div>
+      </div>
+
+      <!-- Google & Gemini AI Search & Reasoning Cockpit -->
+      <div class="search-cockpit-box">
+        <div class="cockpit-title-row">
+          <div class="cockpit-branding">
+            <span class="google-colored">
+              <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+            </span>
+            <span style="color:#818cf8;">✦</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;letter-spacing:0.04em;">GEMINI AI SEARCH & REASONING COCKPIT</span>
+          </div>
+          <span style="font-size:11px;font-family:'DM Mono',monospace;color:#93c5fd;background:rgba(66,133,244,0.18);padding:3px 9px;border-radius:999px;border:1px solid rgba(66,133,244,0.3);">
+            ✦ GOOGLE & GEMINI ACTIVE
+          </span>
+        </div>
+
+        <form class="cockpit-form" id="cockpitSearchForm">
+          <input 
+            type="text" 
+            id="cockpitInput" 
+            class="cockpit-input" 
+            placeholder="✦ Search receipt products, item details, prices, return policies, order tracking (ORD-1001), or plot charts..." 
+            value="Show complete product details, prices, SKUs, and items on my uploaded receipt"
+          />
+          <button type="submit" class="cockpit-submit-btn">
+            <span>Google ✦ Gemini</span>
+          </button>
+        </form>
+
+        <div class="cockpit-chips">
+          <button type="button" class="cockpit-chip" data-q="Show complete product details, prices, SKUs, and items on my uploaded receipt">📦 Product Details & Prices</button>
+          <button type="button" class="cockpit-chip" data-q="What is the return window and deadline for Sony headphones?">🎧 Sony Headphones Return</button>
+          <button type="button" class="cockpit-chip" data-q="What is the warranty coverage for Anker cable?">🔌 Anker Cable Coverage</button>
+          <button type="button" class="cockpit-chip" data-q="Check live status and tracking for ORD-1001">🚚 Track Order ORD-1001</button>
+          <button type="button" class="cockpit-chip" data-q="Can I return final sale clearance items?">❌ Final Sale Rule</button>
+        </div>
+      </div>
+
+      <!-- AI Overview Results Panel -->
+      <div class="ai-results-panel" id="aiOverviewPanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(66,133,244,0.25);padding-bottom:10px;margin-bottom:14px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="google-colored" style="font-size:17px;font-weight:900;">
+              <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+            </span>
+            <span style="color:#818cf8;font-size:16px;font-weight:900;">✦</span>
+            <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:#c7d2fe;">AI OVERVIEW</span>
+            <span id="resQueryText" style="font-size:13px;color:#94a3b8;margin-left:6px;"></span>
+          </div>
+          <button id="btnClearResults" style="background:transparent;border:none;color:#94a3b8;cursor:pointer;font-size:12px;">✖ Close</button>
+        </div>
+
+        <div style="font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;font-family:'DM Mono',monospace;">🌐 GOOGLE KNOWLEDGE & STORE CITATIONS:</div>
+        <div class="citations-grid" id="citationsGrid"></div>
+
+        <div style="font-size:11px;font-weight:700;color:#93c5fd;margin:12px 0 6px;font-family:'DM Mono',monospace;">✦ DIRECT ANSWER:</div>
+        <div id="directAnswerText" style="background:rgba(56,189,248,0.08);border-left:3px solid #38bdf8;padding:12px 16px;border-radius:0 8px 8px 0;font-size:14px;line-height:1.6;margin-bottom:14px;"></div>
+
+        <div style="font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;font-family:'DM Mono',monospace;">📦 VERIFIED PRODUCT DETAILS & TELEMETRY:</div>
+        <div class="products-cards-grid" id="verifiedProductsGrid"></div>
+
+        <div style="font-size:11px;font-weight:700;color:#93c5fd;margin:14px 0 6px;font-family:'DM Mono',monospace;">🔍 PEOPLE ALSO ASK (GOOGLE SEARCHES):</div>
+        <div class="cockpit-chips" id="paaRow"></div>
+      </div>
+
+      <!-- 5.6 Tera ChartGPT Visual Analytics Engine -->
+      <div class="chart-container-box">
+        <div class="chart-controls-bar">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:16px;">📊</span>
+            <span id="chartTitle" style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:#fff;">📈 7-Day Revenue Velocity & Sales Projections</span>
+          </div>
+          <div style="display:flex;gap:6px;">
+            <button class="twin-btn chart-type-btn active" data-type="velocity">Velocity</button>
+            <button class="twin-btn chart-type-btn" data-type="returns">Returns</button>
+            <button class="twin-btn chart-type-btn" data-type="warranty">Warranty</button>
+            <span style="color:#64748b;margin:0 4px;">|</span>
+            <button class="twin-btn chart-style-btn active" data-style="bar">Bar</button>
+            <button class="twin-btn chart-style-btn" data-style="line">Line</button>
+            <button class="twin-btn chart-style-btn" data-style="area">Area</button>
+          </div>
+        </div>
+        <canvas id="chartCanvas"></canvas>
+      </div>
+
+      <!-- Complete Itemized Coverage Cards -->
+      <div class="itemized-card">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+          <span>🔍</span> Complete Itemized Return & Warranty Breakdown
+        </div>
+        <div id="itemizedList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Copilot Chat Console -->
+      <div class="chat-console-box">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+          <span>💬</span> CODEX AI Agent Chat Console
+        </div>
+        <div class="chat-history-list" id="chatHistoryList">
+          <div class="chat-bubble assistant">
+            👋 <strong>Hi, I'm your CODEX Retail Agent.</strong> Ingested <strong>Order REC-2026-8891</strong>. Proactive Alert: Sony Headphones return window expires in <strong>5 days</strong> (2026-09-26). How can I help you today?
+          </div>
+        </div>
+        <form class="chat-input-row" id="chatForm">
+          <input type="text" id="chatInput" class="chat-input" placeholder="Ask follow-up questions: 'When can I return Sony headphones', 'Check status for ORD-1002'..." />
+          <button type="submit" class="chat-submit-btn">Send ↑</button>
+        </form>
+      </div>
+
+      <!-- Raw Ingested Document View -->
+      <div class="cyber-expander">
+        <div class="cyber-expander-header">
+          <span>📄 Original Ingested Receipt Document (Raw Text View)</span>
+          <span>▾</span>
+        </div>
+        <div class="cyber-expander-body">
+          <pre id="rawReceiptCode" style="font-family:'DM Mono',monospace;font-size:11px;color:#94a3b8;white-space:pre-wrap;background:rgba(6,9,19,0.8);padding:12px;border-radius:6px;"></pre>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

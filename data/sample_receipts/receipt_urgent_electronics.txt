@@ -1,0 +1,48 @@
+========================================
+            CODEX RETAIL STORE #402
+       100 Innovation Way, Tech District
+           Tel: (555) 019-2834
+========================================
+RECEIPT / ORDER ID: REC-2026-8891
+CUSTOMER: Alex Morgan
+DATE OF PURCHASE: 2026-08-27
+CASHIER: Marcus T. (Terminal 4)
+PAYMENT: Visa ending in 4102
+
+ITEMS PURCHASED:
+----------------------------------------
+Item: Sony WH-1000XM5 Noise Canceling Headphones
+SKU: ELEC-9012
+Category: Consumer Electronics & Gadgets
+Qty: 1
+Unit Price: $349.99
+Total: $349.99
+Condition: New / Factory Sealed
+Serial Number: SN-SNY-998241
+
+Item: Anker Powerline USB-C Braided Cable 6ft
+SKU: ACC-3312
+Category: Consumer Electronics & Gadgets
+Qty: 1
+Unit Price: $19.99
+Total: $19.99
+Condition: New
+
+Item: Microfiber Screen Cleaning Kit [CLEARANCE / FINAL SALE]
+SKU: CLR-0041
+Category: Final Sale & Clearance Items
+Qty: 1
+Unit Price: $4.99
+Total: $4.99
+Condition: Final Sale - Non Refundable
+----------------------------------------
+SUBTOTAL:       $374.97
+SALES TAX (8%):  $29.99
+TOTAL CHARGE:   $404.96
+========================================
+Store Policy Notice:
+Electronics eligible for 30-day return. 
+Final Sale items non-returnable.
+Keep this receipt for 1-Year Limited Warranty validation.
+Thank you for shopping at CODEX!
+========================================

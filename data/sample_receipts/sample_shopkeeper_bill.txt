@@ -1,0 +1,12 @@
+ABC Superstore #44
+Order: ORD-9912
+Date: 2026-09-10
+Customer: Tabish
+
+1. Apple AirPods Pro 2 - $249.00
+2. Levi's Denim Jacket - $89.00
+3. Coffee Maker Blender - $49.00
+4. Clearout Phone Case [Clearance] - $9.99
+Subtotal: $396.99
+Tax: $31.75
+Total: $428.74

@@ -1,0 +1,23 @@
+# Core LangChain & LangGraph Framework
+langchain>=1.4.0
+langchain-core>=1.6.0
+langchain-chroma>=1.1.0
+langchain-ollama>=1.1.0
+langchain-groq>=1.1.0
+langgraph>=1.2.0
+
+# Vector Database & Embeddings
+chromadb>=1.5.0
+
+# FastMCP Protocol Server
+fastmcp>=4.0.0
+
+# Frontend & UI
+streamlit>=1.30.0
+
+# Data Analysis & Search
+pandas>=2.0.0
+ddgs>=9.0.0
+
+# Environment Configuration
+python-dotenv>=1.0.0
